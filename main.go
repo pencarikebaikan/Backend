@@ -2,6 +2,7 @@ package main
 
 import (
     "net/http"
+    "os"
     "strconv"
     "strings"
 	"github.com/gin-contrib/cors"
@@ -145,5 +146,11 @@ func main() {
     })
 
     // Jalankan server di port 3000
-    r.Run(":3000")
+    
+    port := os.Getenv("PORT")
+    if port == "" {
+        port = "3000"
+    }
+    r.Run(":" + port)    
+    
 }
