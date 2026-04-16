@@ -23,7 +23,8 @@ type Post struct {
 
 func main() {
     // Koneksi ke MySQL (pakai user & password kamu)
-    dsn := "alwi:alwi2007@tcp(127.0.0.1:3306)/test?charset=utf8mb4&parseTime=True&loc=Local"
+
+	dsn := "alwi:alwi2007@tcp(34.21.131.101:3306)/article?charset=utf8mb4&parseTime=True&loc=Local"
     db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
     if err != nil {
         panic("Gagal koneksi database")
@@ -34,7 +35,7 @@ func main() {
 
     r := gin.Default()
 
-	r.Use(cors.Default()) // 🔥 WAJIB biar React bisa akses
+	r.Use(cors.Default()) // ðŸ”¥ WAJIB biar React bisa akses
 
     // CREATE article
     r.POST("/article", func(c *gin.Context) {
